@@ -6,20 +6,24 @@
 
 ---
 
-Built with **[Symfony](https://symfony.com)**.
-
----
-
-### Requirements
+#### Requirements
 
 - **[PHP](https://www.php.net/)**
-- **[Composer](https://getcomposer.org/)**
-- **[Symfony client](https://symfony.com/download)**
 - **[MySQL](https://www.mysql.com/)**
+- **[Composer](https://getcomposer.org/)**
+- **[Yarn](https://yarnpkg.com)**
+- **[Symfony client](https://symfony.com/download)**
 
 ---
 
-### Installation
+#### Installation
 
 - `composer install` to get the framework dependencies.
+- `yarn install` to get the assets dependencies.
+
+---
+
+#### Usage
+
+- `yarn encore dev --watch` to launch webpack.
 - `symfony server:start` to launch local server.
