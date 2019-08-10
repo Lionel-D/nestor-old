@@ -9,6 +9,6 @@
 require('../scss/base.scss');
 
 // Any JS you require will output into a single JS file
-const $ = require('jquery');
+//const $ = require('jquery');
 require('popper.js');
 require('bootstrap');
