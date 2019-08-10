@@ -2,6 +2,8 @@
 
 *Inteligent groceries shopping list manager*
 
+[![CodeFactor](https://www.codefactor.io/repository/github/lionel-d/nestor/badge/develop)](https://www.codefactor.io/repository/github/lionel-d/nestor/overview/develop)
+
 ---
 
 Built with **[Symfony](https://symfony.com)**.
