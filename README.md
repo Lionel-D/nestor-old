@@ -19,14 +19,20 @@
 
 ---
 
-#### Installation
+#### Install
 
 - `composer install` to get the framework dependencies.
 - `yarn install` to get the assets dependencies.
 
 ---
 
-#### Usage
+#### Run
 
 - `yarn encore dev --watch` to launch webpack.
 - `symfony server:start` to launch local server.
+
+---
+
+#### Test
+
+- `./bin/phpunit` to execute tests.
