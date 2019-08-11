@@ -4,6 +4,13 @@ language: php
 # Language version
 php: 7.1.30
 
+# blocklist
+branches:
+  except:
+    - feature/*
+    - hotfix/*
+    - release/*
+
 env:
   global:
     - CC_TEST_REPORTER_ID=2c00049151ac789c3d8a59b61d302d58ef6a332acc697c8ff40184294cbb3e9c
