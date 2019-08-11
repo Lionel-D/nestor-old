@@ -3,6 +3,7 @@
 *Inteligent groceries shopping list manager*
 
 [![CodeFactor](https://www.codefactor.io/repository/github/lionel-d/nestor/badge/develop)](https://www.codefactor.io/repository/github/lionel-d/nestor/overview/develop)
+[![Build Status](https://travis-ci.com/Lionel-D/nestor.svg?branch=develop)](https://travis-ci.com/Lionel-D/nestor)
 
 ---
 
