@@ -4,6 +4,10 @@ language: php
 # Language version
 php: 7.1.30
 
+env:
+  global:
+    - CC_TEST_REPORTER_ID=2c00049151ac789c3d8a59b61d302d58ef6a332acc697c8ff40184294cbb3e9c
+
 # Cache config
 cache:
   yarn: true
@@ -25,10 +29,13 @@ install:
 # Build assets
 before_script:
   - yarn encore dev
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 
 # Run tests
 script:
-  - ./bin/phpunit
+  - ./bin/phpunit --coverage-clover
   # this checks that the YAML config files contain no syntax errors
   - ./bin/console lint:yaml config --parse-tags
   # this checks that the Twig template files contain no syntax errors
@@ -39,3 +46,6 @@ script:
   - ./bin/console security:check
   # this checks that Doctrine's mapping configurations are valid
   - ./bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction
+
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
