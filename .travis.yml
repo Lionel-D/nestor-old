@@ -35,7 +35,7 @@ before_script:
 
 # Run tests
 script:
-  - ./bin/phpunit --coverage-clover test-coverage-report.xml
+  - ./bin/phpunit --coverage-clover clover.xml
   # this checks that the YAML config files contain no syntax errors
   - ./bin/console lint:yaml config --parse-tags
   # this checks that the Twig template files contain no syntax errors
@@ -48,4 +48,4 @@ script:
   - ./bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction
 
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - ./cc-test-reporter after-build --coverage-input-type clover --id $CC_TEST_REPORTER_ID --exit-code $TRAVIS_TEST_RESULT
