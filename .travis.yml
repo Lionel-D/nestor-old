@@ -2,7 +2,7 @@
 language: php
 
 # Language version
-php: '7.1'
+php: 7.1.30
 
 # Cache config
 cache:
