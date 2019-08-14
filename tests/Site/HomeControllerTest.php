@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Tests;
+namespace App\Tests\Site;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
- * Class PublicControllerTest
- * @package App\Tests
+ * Class HomeControllerTest
+ * @package App\Tests\Site
  * @author  Lionel DAELEMANS <hello@lionel-d.com>
  */
-class PublicControllerTest extends WebTestCase
+class HomeControllerTest extends WebTestCase
 {
     public function testHomepageDisplay()
     {
@@ -18,6 +18,6 @@ class PublicControllerTest extends WebTestCase
         $client->request('GET', '/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Hello PublicController!');
+        $this->assertSelectorTextContains('h1', 'Hello HomeController!');
     }
 }
