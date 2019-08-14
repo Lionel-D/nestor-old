@@ -1,26 +1,26 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Site;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class PublicController
- * @package App\Controller
+ * Class HomeController
+ * @package App\Controller\Site
  * @author  Lionel DAELEMANS <hello@lionel-d.com>
  */
-class PublicController extends AbstractController
+class HomeController extends AbstractController
 {
     /**
-     * @Route("/", name="public_homepage")
+     * @Route("/", name="site_homepage")
      * @return Response
      */
     public function index()
     {
-        return $this->render('public/index.html.twig', [
-            'controller_name' => 'PublicController',
+        return $this->render('site/home/index.html.twig', [
+            'controller_name' => 'HomeController',
         ]);
     }
 }
