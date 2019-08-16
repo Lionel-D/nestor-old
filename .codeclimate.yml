@@ -1,0 +1,7 @@
+plugins:
+  phpcodesniffer:
+    enabled: true
+    checks:
+      Generic Files LineLength TooLong:
+        lineLimit: 140
+        absoluteLineLimit: 160
