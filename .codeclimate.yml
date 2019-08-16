@@ -1,10 +1,6 @@
 plugins:
   fixme:
     enabled: true
-  sass-lint:
-    enabled: false
-  markdownlint:
-    enabled: false
   scss-lint:
     enabled: true
   phpcodesniffer:
