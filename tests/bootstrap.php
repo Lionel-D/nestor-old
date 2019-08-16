@@ -1,38 +1,34 @@
 <?php
 
-// First execute cache:clear for test environment
-passthru(sprintf(
-    'APP_ENV=%s php "%s/../bin/console" cache:clear --no-warmup',
-    $_ENV['BOOTSTRAP_LOCAL_TEST_ENV'],
-    __DIR__
-));
+$commands = [
+  'php "%s/../bin/console" cache:clear --no-warmup',
+  'php "%s/../bin/console" doctrine:database:drop --force',
+  'php "%s/../bin/console" doctrine:database:create',
+  'php "%s/../bin/console" doctrine:migrations:migrate --no-interaction',
+  'php "%s/../bin/console" doctrine:fixtures:load --no-interaction',
+];
 
-// Then drop existing test database
-passthru(sprintf(
-    'APP_ENV=%s php "%s/../bin/console" doctrine:database:drop --force',
-    $_ENV['BOOTSTRAP_LOCAL_TEST_ENV'],
-    __DIR__
-));
+$prefix = '';
 
-// And recreate fresh database
-passthru(sprintf(
-    'APP_ENV=%s php "%s/../bin/console" doctrine:database:create',
-    $_ENV['BOOTSTRAP_LOCAL_TEST_ENV'],
-    __DIR__
-));
+if (isset($_ENV['BOOTSTRAP_LOCAL_TEST_ENV'])) {
+    $localTestEnv = $_ENV['BOOTSTRAP_LOCAL_TEST_ENV'];
+    $prefix = 'APP_ENV=%s ';
+}
 
-// Execute migrations
-passthru(sprintf(
-    'APP_ENV=%s php "%s/../bin/console" doctrine:migrations:migrate --no-interaction',
-    $_ENV['BOOTSTRAP_LOCAL_TEST_ENV'],
-    __DIR__
-));
-
-// And load fixtures
-passthru(sprintf(
-    'APP_ENV=%s php "%s/../bin/console" doctrine:fixtures:load --no-interaction',
-    $_ENV['BOOTSTRAP_LOCAL_TEST_ENV'],
-    __DIR__
-));
+foreach ($commands as $command) {
+    if ($prefix !== '') {
+        passthru(sprintf(
+            $prefix.$command,
+            $localTestEnv,
+            __DIR__
+        ));
+    } else {
+        passthru(sprintf(
+            $command,
+            null,
+            __DIR__
+        ));
+    }
+}
 
 require __DIR__.'/../config/bootstrap.php';
