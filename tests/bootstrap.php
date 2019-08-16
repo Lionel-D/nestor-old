@@ -25,7 +25,6 @@ foreach ($commands as $command) {
     } else {
         passthru(sprintf(
             $command,
-            null,
             __DIR__
         ));
     }
