@@ -1,9 +1,9 @@
 .browser-overlay {
   position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background: rgba($white, .9);
   width: 100vw;
   height: 100vh;
-  left: 0;
-  top: 0;
-  background: rgba($white, .9);
-  z-index: 9999;
 }
