@@ -1,7 +1,10 @@
 plugins:
+  fixme:
+    enabled: true
+  scss-lint:
+    enabled: true
   phpcodesniffer:
     enabled: true
     checks:
       Generic Files LineLength TooLong:
-        lineLimit: 140
-        absoluteLineLimit: 160
+        enabled: false
