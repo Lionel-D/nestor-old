@@ -2,22 +2,30 @@
 
 namespace App\Tests\Site;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use App\Tests\ProjectTestCase;
 
 /**
  * Class HomeControllerTest
  * @package App\Tests\Site
  * @author  Lionel DAELEMANS <hello@lionel-d.com>
  */
-class HomeControllerTest extends WebTestCase
+class HomeControllerTest extends ProjectTestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+    }
+
     public function testHomepageDisplay()
     {
-        $client = static::createClient();
-
-        $client->request('GET', '/');
+        $this->client->request('GET', '/');
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('h1', 'Hello HomeController!');
+    }
+
+    protected function tearDown()
+    {
+        parent::tearDown();
     }
 }

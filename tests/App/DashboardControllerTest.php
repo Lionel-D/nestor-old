@@ -2,42 +2,23 @@
 
 namespace App\Tests\App;
 
-use App\Entity\User;
-use Doctrine\ORM\EntityManager;
-use Symfony\Bundle\FrameworkBundle\KernelBrowser;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\BrowserKit\Cookie;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Guard\Token\PostAuthenticationGuardToken;
+use App\Tests\ProjectTestCase;
 
 /**
  * Class DashboardControllerTest
  * @package App\Tests\App
  * @author  Lionel DAELEMANS <hello@lionel-d.com>
  */
-class DashboardControllerTest extends WebTestCase
+class DashboardControllerTest extends ProjectTestCase
 {
-    /**
-     * @var KernelBrowser
-     */
-    private $client;
-
-    /**
-     * @var EntityManager
-     */
-    private $entityManager;
-
-    public function setUp(): void
+    protected function setUp(): void
     {
-        $this->client = static::createClient();
-        $this->entityManager = $this->client->getContainer()
-            ->get('doctrine')
-            ->getManager();
+        parent::setUp();
     }
 
-    public function testDashboardDisplay()
+    public function testDashboardDisplayAsAuthenticated()
     {
-        $this->logIn();
+        $this->assertLoggedAsAdmin();
 
         $this->client->request('GET', '/app/dashboard');
 
@@ -45,20 +26,17 @@ class DashboardControllerTest extends WebTestCase
         $this->assertSelectorTextContains('h1', 'Hello DashboardController!');
     }
 
-    private function logIn()
+    public function testDashboardDisplayAsAnonymous()
     {
-        /** @var UserInterface $user */
-        $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => 'hello@lionel-d.com']);
-        $session = $this->client->getContainer()->get('session');
-        $firewall = 'main';
+        $this->client->request('GET', '/app/dashboard');
 
-        $token = new PostAuthenticationGuardToken($user, '_security_'.$firewall, ['ROLE_ADMIN']);
+        $this->assertResponseRedirects('/login');
+        $this->client->followRedirect();
+        $this->assertSelectorTextContains('h1', 'Please sign in');
+    }
 
-        $session->set('_security_'.$firewall, serialize($token));
-        $session->save();
-
-        $cookie = new Cookie($session->getName(), $session->getId());
-
-        $this->client->getCookieJar()->set($cookie);
+    protected function tearDown()
+    {
+        parent::tearDown();
     }
 }
