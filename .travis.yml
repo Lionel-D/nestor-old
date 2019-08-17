@@ -4,13 +4,17 @@ language: php
 # Language version
 php: 7.1.30
 
-# blocklist
+services:
+  - mysql
+
+# Blocklist
 branches:
   except:
     - feature/*
     - hotfix/*
     - release/*
 
+# Env variables
 env:
   global:
     - CC_TEST_REPORTER_ID=2c00049151ac789c3d8a59b61d302d58ef6a332acc697c8ff40184294cbb3e9c
@@ -54,5 +58,6 @@ script:
   # this checks that Doctrine's mapping configurations are valid
   - ./bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction
 
+# Call codeclimate reporter for test coverage
 after_script:
   - ./cc-test-reporter after-build --coverage-input-type clover --id $CC_TEST_REPORTER_ID --exit-code $TRAVIS_TEST_RESULT

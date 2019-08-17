@@ -1,0 +1,25 @@
+version: "2"
+
+plugins:
+  fixme:
+    enabled: true
+  scss-lint:
+    enabled: true
+  phpcodesniffer:
+    enabled: true
+    checks:
+      Generic Files LineLength TooLong:
+        enabled: false
+
+exclude_patterns:
+  - "assets/"
+  - "bin/"
+  - "config/"
+  - "nodes_modules/"
+  - "public/"
+  - "tests/"
+  - "translations/"
+  - "var/"
+  - "vendor/"
+  - "src/Migrations/"
+  - "src/DataFixtures/"

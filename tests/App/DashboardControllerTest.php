@@ -2,22 +2,41 @@
 
 namespace App\Tests\App;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use App\Tests\ProjectTestCase;
 
 /**
  * Class DashboardControllerTest
  * @package App\Tests\App
  * @author  Lionel DAELEMANS <hello@lionel-d.com>
  */
-class DashboardControllerTest extends WebTestCase
+class DashboardControllerTest extends ProjectTestCase
 {
-    public function testDashboardDisplay()
+    protected function setUp(): void
     {
-        $client = static::createClient();
+        parent::setUp();
+    }
 
-        $client->request('GET', '/app/dashboard');
+    public function testDashboardDisplayAsAuthenticated()
+    {
+        $this->assertLoggedAsAdmin();
+
+        $this->client->request('GET', '/app/dashboard');
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('h1', 'Hello DashboardController!');
+    }
+
+    public function testDashboardDisplayAsAnonymous()
+    {
+        $this->client->request('GET', '/app/dashboard');
+
+        $this->assertResponseRedirects('/login');
+        $this->client->followRedirect();
+        $this->assertSelectorTextContains('h1', 'Please sign in');
+    }
+
+    protected function tearDown()
+    {
+        parent::tearDown();
     }
 }
