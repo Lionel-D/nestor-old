@@ -20,8 +20,12 @@
 
 #### Install
 
+- rename `.env.dist` to `.env` and set values for your local environment.
 - `composer install` to get the framework dependencies.
 - `yarn install` to get the assets dependencies.
+- `php bin/console doctrine:database:create` to create database.
+- `php bin doctrine:migrations:migrate` to setup database structure.
+- `php bin/console doctrines:fixtures:load` to load data.
 
 ---
 
@@ -32,6 +36,10 @@
 
 ---
 
-#### Test
+#### Tests
 
+- duplicate `phpunit.xml.dist` to `phpunit.xml`
+- add the following to your local `phpunit.xml` file, under `<php>` :
+    - `<env name="BOOTSTRAP_LOCAL_TEST_ENV" value="test"/>` to force execution in test environment.
+    - `<env name="DATABASE_URL" value="mysql://user:password@127.0.0.1:3306/nestor_test"/>` with your local MySQL credentials to run tests with a dedicated database.
 - `./bin/phpunit` to execute tests.
