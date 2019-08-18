@@ -35,8 +35,8 @@ abstract class ProjectTestCase extends WebTestCase
     protected function assertLoggedAsUser()
     {
         /** @var UserInterface $user */
-        $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => 'john@doe.com']);
-        $session = $this->client->getContainer()->get('session');
+        $user     = $this->entityManager->getRepository(User::class)->findOneBy(['email' => 'john@doe.com']);
+        $session  = $this->client->getContainer()->get('session');
         $firewall = 'main';
 
         $token = new PostAuthenticationGuardToken($user, '_security_'.$firewall, ['ROLE_USER']);
@@ -52,8 +52,8 @@ abstract class ProjectTestCase extends WebTestCase
     protected function assertLoggedAsAdmin()
     {
         /** @var UserInterface $user */
-        $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => 'admin@admin.com']);
-        $session = $this->client->getContainer()->get('session');
+        $user     = $this->entityManager->getRepository(User::class)->findOneBy(['email' => 'admin@admin.com']);
+        $session  = $this->client->getContainer()->get('session');
         $firewall = 'main';
 
         $token = new PostAuthenticationGuardToken($user, '_security_'.$firewall, ['ROLE_ADMIN']);
@@ -69,8 +69,8 @@ abstract class ProjectTestCase extends WebTestCase
     protected function assertLoggedAsSuperAdmin()
     {
         /** @var UserInterface $user */
-        $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => 'hello@lionel-d.com']);
-        $session = $this->client->getContainer()->get('session');
+        $user     = $this->entityManager->getRepository(User::class)->findOneBy(['email' => 'hello@lionel-d.com']);
+        $session  = $this->client->getContainer()->get('session');
         $firewall = 'main';
 
         $token = new PostAuthenticationGuardToken($user, '_security_'.$firewall, ['ROLE_SUPER_ADMIN']);
