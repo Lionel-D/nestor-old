@@ -32,21 +32,19 @@ abstract class ProjectTestCase extends WebTestCase
             ->getManager();
     }
 
+    protected function assertLoggedAsUser()
+    {
+        $this->assertLogged('john@doe.com', ['ROLE_USER']);
+    }
+
     protected function assertLoggedAsAdmin()
     {
-        /** @var UserInterface $user */
-        $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => 'hello@lionel-d.com']);
-        $session = $this->client->getContainer()->get('session');
-        $firewall = 'main';
+        $this->assertLogged('admin@admin.com', ['ROLE_ADMIN']);
+    }
 
-        $token = new PostAuthenticationGuardToken($user, '_security_'.$firewall, ['ROLE_ADMIN']);
-
-        $session->set('_security_'.$firewall, serialize($token));
-        $session->save();
-
-        $cookie = new Cookie($session->getName(), $session->getId());
-
-        $this->client->getCookieJar()->set($cookie);
+    protected function assertLoggedAsSuperAdmin()
+    {
+        $this->assertLogged('hello@lionel-d.com', ['ROLE_SUPER_ADMIN']);
     }
 
     protected function tearDown()
@@ -55,5 +53,26 @@ abstract class ProjectTestCase extends WebTestCase
 
         $this->entityManager->close();
         $this->entityManager = null; // avoid memory leaks
+    }
+
+    /**
+     * @param string $email
+     * @param array  $roles
+     */
+    private function assertLogged($email, $roles)
+    {
+        /** @var UserInterface $user */
+        $user     = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $email]);
+        $session  = $this->client->getContainer()->get('session');
+        $firewall = 'main';
+
+        $token = new PostAuthenticationGuardToken($user, '_security_'.$firewall, $roles);
+
+        $session->set('_security_'.$firewall, serialize($token));
+        $session->save();
+
+        $cookie = new Cookie($session->getName(), $session->getId());
+
+        $this->client->getCookieJar()->set($cookie);
     }
 }

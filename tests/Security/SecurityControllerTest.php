@@ -3,6 +3,7 @@
 namespace App\Tests\Security;
 
 use App\Tests\ProjectTestCase;
+use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * Class SecurityControllerTest
@@ -18,17 +19,9 @@ class SecurityControllerTest extends ProjectTestCase
 
     public function testLoginSuccessful()
     {
-        $crawler = $this->client->request('GET', '/login');
+        $crawler = $this->successfullyLoadLoginPage();
 
-        $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Please sign in');
-
-        $form = $crawler->selectButton('login_submit')->form();
-
-        $form['email']    = 'hello@lionel-d.com';
-        $form['password'] = 'admin';
-
-        $this->client->submit($form);
+        $this->fillAndSubmitLoginForm($crawler, 'john@doe.com', 'password');
 
         $this->assertResponseRedirects('/app/dashboard');
         $this->client->followRedirect();
@@ -37,17 +30,9 @@ class SecurityControllerTest extends ProjectTestCase
 
     public function testLoginFailed()
     {
-        $crawler = $this->client->request('GET', '/login');
+        $crawler = $this->successfullyLoadLoginPage();
 
-        $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Please sign in');
-
-        $form = $crawler->selectButton('login_submit')->form();
-
-        $form['email']    = 'fake@email.com';
-        $form['password'] = 'azerty';
-
-        $this->client->submit($form);
+        $this->fillAndSubmitLoginForm($crawler, 'fake@email.com', 'azerty');
 
         $this->assertResponseRedirects('/login');
         $this->client->followRedirect();
@@ -56,7 +41,7 @@ class SecurityControllerTest extends ProjectTestCase
 
     public function testLoginAsAlreadyAuthenticated()
     {
-        $this->assertLoggedAsAdmin();
+        $this->assertLoggedAsUser();
 
         $this->client->request('GET', '/login');
 
@@ -67,7 +52,7 @@ class SecurityControllerTest extends ProjectTestCase
 
     public function testLogout()
     {
-        $this->assertLoggedAsAdmin();
+        $this->assertLoggedAsUser();
 
         $this->client->request('GET', '/logout');
 
@@ -79,5 +64,33 @@ class SecurityControllerTest extends ProjectTestCase
     protected function tearDown()
     {
         parent::tearDown();
+    }
+
+    /**
+     * @return Crawler
+     */
+    private function successfullyLoadLoginPage()
+    {
+        $crawler = $this->client->request('GET', '/login');
+
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorTextContains('h1', 'Please sign in');
+
+        return $crawler;
+    }
+
+    /**
+     * @param Crawler $crawler
+     * @param string  $email
+     * @param string  $password
+     */
+    private function fillAndSubmitLoginForm(Crawler $crawler, $email, $password)
+    {
+        $form = $crawler->selectButton('login_submit')->form();
+
+        $form['email']    = $email;
+        $form['password'] = $password;
+
+        $this->client->submit($form);
     }
 }

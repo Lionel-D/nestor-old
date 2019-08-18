@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Tests\App;
+namespace App\Tests\Admin;
 
 use App\Tests\ProjectTestCase;
 
 /**
  * Class DashboardControllerTest
- * @package App\Tests\App
+ * @package App\Tests\Admin
  * @author  Lionel DAELEMANS <hello@lionel-d.com>
  */
 class DashboardControllerTest extends ProjectTestCase
@@ -16,19 +16,28 @@ class DashboardControllerTest extends ProjectTestCase
         parent::setUp();
     }
 
-    public function testDashboardDisplayAsAuthenticatedUser()
+    public function testDashboardDisplayAsAuthenticatedAdmin()
     {
-        $this->assertLoggedAsUser();
+        $this->assertLoggedAsAdmin();
 
-        $this->client->request('GET', '/app/dashboard');
+        $this->client->request('GET', '/admin/dashboard');
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('h1', 'Hello DashboardController!');
     }
 
+    public function testDashboardDisplayAsAuthenticatedUser()
+    {
+        $this->assertLoggedAsUser();
+
+        $this->client->request('GET', '/admin/dashboard');
+
+        $this->assertResponseStatusCodeSame(403);
+    }
+
     public function testDashboardDisplayAsAnonymous()
     {
-        $this->client->request('GET', '/app/dashboard');
+        $this->client->request('GET', '/admin/dashboard');
 
         $this->assertResponseRedirects('/login');
         $this->client->followRedirect();

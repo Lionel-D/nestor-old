@@ -12,14 +12,10 @@ plugins:
         enabled: false
 
 exclude_patterns:
-  - "assets/"
   - "bin/"
   - "config/"
   - "nodes_modules/"
   - "public/"
-  - "tests/"
   - "translations/"
   - "var/"
   - "vendor/"
-  - "src/Migrations/"
-  - "src/DataFixtures/"
