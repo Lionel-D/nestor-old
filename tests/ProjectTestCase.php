@@ -34,7 +34,7 @@ abstract class ProjectTestCase extends WebTestCase
 
     protected function assertLoggedAsUser()
     {
-        $this->assertLogged('john@doe.com', []);
+        $this->assertLogged('john@doe.com', ['ROLE_USER']);
     }
 
     protected function assertLoggedAsAdmin()
