@@ -2,6 +2,10 @@
 
 {% block title %}Log in!{% endblock %}
 
+{% block stylesheets %}
+    {{ encore_entry_link_tags('login') }}
+{% endblock %}
+
 {% block body %}
     <div class="container pt-5">
         <form method="post">
@@ -39,4 +43,8 @@
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
         </form>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('login') }}
 {% endblock %}
