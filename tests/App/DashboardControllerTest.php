@@ -16,9 +16,9 @@ class DashboardControllerTest extends ProjectTestCase
         parent::setUp();
     }
 
-    public function testDashboardDisplayAsAuthenticated()
+    public function testDashboardDisplayAsAuthenticatedUser()
     {
-        $this->assertLoggedAsAdmin();
+        $this->assertLoggedAsUser();
 
         $this->client->request('GET', '/app/dashboard');
 

@@ -25,8 +25,8 @@ class SecurityControllerTest extends ProjectTestCase
 
         $form = $crawler->selectButton('login_submit')->form();
 
-        $form['email']    = 'hello@lionel-d.com';
-        $form['password'] = 'admin';
+        $form['email']    = 'john@doe.com';
+        $form['password'] = 'password';
 
         $this->client->submit($form);
 
@@ -56,7 +56,7 @@ class SecurityControllerTest extends ProjectTestCase
 
     public function testLoginAsAlreadyAuthenticated()
     {
-        $this->assertLoggedAsAdmin();
+        $this->assertLoggedAsUser();
 
         $this->client->request('GET', '/login');
 
@@ -67,7 +67,7 @@ class SecurityControllerTest extends ProjectTestCase
 
     public function testLogout()
     {
-        $this->assertLoggedAsAdmin();
+        $this->assertLoggedAsUser();
 
         $this->client->request('GET', '/logout');
 
