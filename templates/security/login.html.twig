@@ -36,8 +36,8 @@
                 </div>
             </div>
 
-            <button type="submit" name="login_submit" class="btn btn-primary">
-                Sign in
+            <button type="submit" name="login_submit" class="btn btn-outline-nestor">
+                {{ 'Sign in'|trans }}
             </button>
 
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
