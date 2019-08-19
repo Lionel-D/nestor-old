@@ -7,4 +7,8 @@ $nestor-orange: #ff8f00;
 
 // -- Imports ---------------- //
 @import 'bootstrap/bootstrap';
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/solid";
+//@import "../../node_modules/@fortawesome/fontawesome-free/scss/regular";
+//@import "../../node_modules/@fortawesome/fontawesome-free/scss/brands";
 @import 'base/global';
