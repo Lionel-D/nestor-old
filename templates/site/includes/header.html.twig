@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <nav class="navbar sticky-top navbar-expand-md navbar-dark bg-dark">
         <a href="{{ path('site_homepage') }}" class="navbar-brand py-0">
             <img src="{{ asset('build/images/nestor-icon.svg') }}" width="40" height="40" alt="Nestor Logo">
         </a>
@@ -13,7 +13,7 @@
                 {# Here goes the site navigation links #}
             </ul>
             <hr class="d-md-none">
-            <a href="{{ path('security_login') }}" class="btn btn-sm btn-outline-primary">{{ 'Login'|trans }}</a>
+            <a href="{{ path('security_login') }}" class="btn btn-sm btn-outline-nestor">{{ 'Sign in'|trans }}</a>
         </div>
     </nav>
 </header>
