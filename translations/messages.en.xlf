@@ -21,6 +21,10 @@
         <source>messages.js-disabled.informative-link</source>
         <target><![CDATA[Please <a href="https://enable-javascript.com/" title="Go to enable-javascript.com">activate Javascript</a> on your browser to to improve your experience.]]></target>
       </trans-unit>
+      <trans-unit id="nWMiwfT" resname="Login">
+        <source>Login</source>
+        <target>Login</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

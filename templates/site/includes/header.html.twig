@@ -1,0 +1,19 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a href="{{ path('site_homepage') }}" class="navbar-brand py-0">
+            <img src="{{ asset('build/images/nestor-icon.svg') }}" width="40" height="40" alt="Nestor Logo">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="site-nav" class="collapse navbar-collapse justify-content-end text-right">
+            <ul class="navbar-nav mr-md-3">
+                {# Here goes the site navigation links #}
+            </ul>
+            <hr class="d-md-none">
+            <a href="{{ path('security_login') }}" class="btn btn-sm btn-outline-primary">{{ 'Login'|trans }}</a>
+        </div>
+    </nav>
+</header>
