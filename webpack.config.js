@@ -36,8 +36,7 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
-    .addEntry('base', './assets/js/base.js')
-    .addEntry('login', './assets/js/login.js')
+    .addEntry('security', './assets/js/security.js')
     .addEntry('site', './assets/js/site.js')
     .addEntry('app', './assets/js/app.js')
     .addEntry('admin', './assets/js/admin.js')

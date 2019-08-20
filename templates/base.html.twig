@@ -12,7 +12,6 @@
         <link rel="canonical" href="{{ url(app.request.attributes.get("_route"), app.request.attributes.get("_route_params")) }}">
 
         <!-- CSS stylesheet -->
-        {{ encore_entry_link_tags('base') }}
         {% block stylesheets %}{% endblock %}
 
         <!-- Favicons, Touch-icons & more -->
@@ -38,7 +37,6 @@
         {% block body %}{% endblock %}
 
         <!-- Javascript -->
-        {{ encore_entry_script_tags('base') }}
         {% block javascripts %}{% endblock %}
 
         <noscript>

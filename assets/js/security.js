@@ -1,7 +1,7 @@
-// -- SITE WEBPACK LOADER ------------------------------ //
+// -- SECURITY WEBPACK LOADER -------------------------- //
 
 // -- CSS FILES ---------------------------------------- //
-require('../scss/site.scss');
+require('../scss/security.scss');
 
 // -- JS FILES ----------------------------------------- //
 //const $ = require('jquery');

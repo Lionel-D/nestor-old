@@ -9,9 +9,9 @@
 // -- BOOTSTRAP ---------------------------------------- //
 @import "../../node_modules/bootstrap/scss/functions";
 @import "global/bootstrap-var";
-@import "admin/bootstrap-var";
+@import "security/bootstrap-var";
 @import "global/bootstrap";
-@import "admin/bootstrap";
+@import "security/bootstrap";
 
 // -- FONT AWESOME ------------------------------------- //
 //@import "../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
@@ -21,4 +21,4 @@
 
 // -- STYLES ------------------------------------------- //
 @import "global/styles";
-@import "admin/overall";
+@import "security/overall";

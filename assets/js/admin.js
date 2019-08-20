@@ -1,8 +1,9 @@
-/* ---------------------------------- */
-/* ------ Admin specific files ------ */
-/* ---------------------------------- */
+// -- ADMIN WEBPACK LOADER ----------------------------- //
 
-/* CSS Files ------------------------ */
-require('../scss/admin.scss');
+// -- CSS FILES ---------------------------------------- //
+require('../scss/site.scss');
 
-/* JS Files ------------------------- */
+// -- JS FILES ----------------------------------------- //
+//const $ = require('jquery');
+//require('popper.js');
+//require('bootstrap');
