@@ -6,4 +6,4 @@ require('../scss/app.scss');
 // -- JS FILES ----------------------------------------- //
 //const $ = require('jquery');
 //require('popper.js');
-//require('bootstrap');
+require('bootstrap');

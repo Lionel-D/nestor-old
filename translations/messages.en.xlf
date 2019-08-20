@@ -11,7 +11,7 @@
       </trans-unit>
       <trans-unit id="TlkJ3BA" resname="messages.old-browser.informative-link">
         <source>messages.old-browser.informative-link</source>
-        <target><![CDATA[Please <a href="https://browsehappy.com/" title="Go to browserhappy.com">upgrade your browser</a> to improve your experience and security.]]></target>
+        <target>messages.old-browser.informative-link</target>
       </trans-unit>
       <trans-unit id="ZNpHpHq" resname="Javascript is disabled !">
         <source>Javascript is disabled !</source>
@@ -19,11 +19,11 @@
       </trans-unit>
       <trans-unit id="8o5S3nv" resname="messages.js-disabled.informative-link">
         <source>messages.js-disabled.informative-link</source>
-        <target><![CDATA[Please <a href="https://enable-javascript.com/" title="Go to enable-javascript.com">activate Javascript</a> on your browser to to improve your experience.]]></target>
+        <target>messages.js-disabled.informative-link</target>
       </trans-unit>
-      <trans-unit id="v9QCsvb" resname="Sign in">
-        <source>Sign in</source>
-        <target>Sign in</target>
+      <trans-unit id="LwBq2ci" resname="Nestor Logo">
+        <source>Nestor Logo</source>
+        <target>Nestor Logo</target>
       </trans-unit>
     </body>
   </file>

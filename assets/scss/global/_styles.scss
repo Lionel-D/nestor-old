@@ -1,5 +1,10 @@
 // -- GLOBAL STYLING ----------------------------------- //
 
+html,
+body {
+  height: 100%;
+}
+
 .browser-overlay {
   position: fixed;
   top: 0;
