@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class HomeController
- * @package App\Controller\Site
+ * @package App\Controller\Website
  * @author  Lionel DAELEMANS <hello@lionel-d.com>
  */
 class HomeController extends AbstractController

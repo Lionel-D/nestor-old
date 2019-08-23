@@ -12,11 +12,6 @@ use Symfony\Component\DomCrawler\Crawler;
  */
 class SecurityControllerTest extends ProjectTestCase
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-    }
-
     public function testLoginSuccessful()
     {
         $crawler = $this->successfullyLoadLoginPage();
@@ -25,10 +20,21 @@ class SecurityControllerTest extends ProjectTestCase
 
         $this->assertResponseRedirects('/app/dashboard');
         $this->client->followRedirect();
-        $this->assertSelectorTextContains('h1', 'Hello DashboardController!');
+        $this->assertSelectorTextContains('h1', 'Hello AppDashboardController!');
     }
 
-    public function testLoginFailed()
+    public function testLoginFailedWrongPassword()
+    {
+        $crawler = $this->successfullyLoadLoginPage();
+
+        $this->fillAndSubmitLoginForm($crawler, 'john@doe.com', 'wrongpassword');
+
+        $this->assertResponseRedirects('/login');
+        $this->client->followRedirect();
+        $this->assertSelectorTextContains('.alert-danger', 'Invalid credentials.');
+    }
+
+    public function testLoginFailedNoAccount()
     {
         $crawler = $this->successfullyLoadLoginPage();
 
@@ -47,7 +53,7 @@ class SecurityControllerTest extends ProjectTestCase
 
         $this->assertResponseRedirects('/app/dashboard');
         $this->client->followRedirect();
-        $this->assertSelectorTextContains('h1', 'Hello DashboardController!');
+        $this->assertSelectorTextContains('h1', 'Hello AppDashboardController!');
     }
 
     public function testLogout()
@@ -61,11 +67,6 @@ class SecurityControllerTest extends ProjectTestCase
         $this->assertSelectorTextContains('h1', 'Hello HomeController!');
     }
 
-    protected function tearDown()
-    {
-        parent::tearDown();
-    }
-
     /**
      * @return Crawler
      */
@@ -74,7 +75,7 @@ class SecurityControllerTest extends ProjectTestCase
         $crawler = $this->client->request('GET', '/login');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Please sign in');
+        $this->assertSelectorTextContains('.card-header', 'Please sign in');
 
         return $crawler;
     }
