@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Site;
+namespace App\Tests\Website;
 
 use App\Tests\ProjectTestCase;
 

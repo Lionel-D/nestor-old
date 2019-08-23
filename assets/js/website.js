@@ -1,9 +1,10 @@
-// -- SITE WEBPACK LOADER ------------------------------ //
+// -- WEBPACK LOADER ----------------------------------- //
 
 // -- CSS FILES ---------------------------------------- //
-require('../scss/site.scss');
+require('../scss/website.scss');
 
 // -- JS FILES ----------------------------------------- //
+// -- Bootstrap dependencies
 //const $ = require('jquery');
 //require('popper.js');
-require('bootstrap');
+//require('bootstrap');

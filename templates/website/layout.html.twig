@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    {{ encore_entry_link_tags('site') }}
+    {{ encore_entry_link_tags('website') }}
 {% endblock %}
 
 {% block body %}
-    {{ include('site/includes/header.html.twig') }}
+    {{ include('website/includes/header.html.twig') }}
     {% block main %}{% endblock %}
 {% endblock %}
 
 {% block javascripts %}
-    {{ encore_entry_script_tags('site') }}
+    {{ encore_entry_script_tags('website') }}
 {% endblock %}
