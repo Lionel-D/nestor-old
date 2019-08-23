@@ -7,4 +7,4 @@ require('../scss/website.scss');
 // -- Bootstrap dependencies
 //const $ = require('jquery');
 //require('popper.js');
-//require('bootstrap');
+require('bootstrap');
