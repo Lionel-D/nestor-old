@@ -5,9 +5,8 @@
 {% endblock %}
 
 {% block body %}
-    <header></header>
+    {{ include('admin/includes/header.html.twig') }}
     {% block main %}{% endblock %}
-    <footer></footer>
 {% endblock %}
 
 {% block javascripts %}
