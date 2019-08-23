@@ -1,24 +1,27 @@
 @charset "utf-8";
 
 // -- GOOGLE FONTS ------------------------------------- //
-@import "global/fonts";
+@import "global/loader/fonts";
+@import "security/loader/fonts";
 
 // -- VARIABLES ---------------------------------------- //
-@import "global/variables";
+@import "global/loader/variables";
+@import "security/loader/variables";
 
 // -- BOOTSTRAP ---------------------------------------- //
 @import "../../node_modules/bootstrap/scss/functions";
-@import "global/bootstrap-var";
-@import "security/bootstrap-var";
-@import "global/bootstrap";
-@import "security/bootstrap";
+@import "global/loader/bootstrap-custom";
+@import "security/loader/bootstrap-custom";
+@import "global/loader/bootstrap";
+@import "security/loader/bootstrap";
 
 // -- FONT AWESOME ------------------------------------- //
 //@import "../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+// -- Icons styles to load
 //@import "../../node_modules/@fortawesome/fontawesome-free/scss/solid";
 //@import "../../node_modules/@fortawesome/fontawesome-free/scss/regular";
 //@import "../../node_modules/@fortawesome/fontawesome-free/scss/brands";
 
 // -- STYLES ------------------------------------------- //
-@import "global/styles";
-@import "security/overall";
+@import "global/main";
+@import "security/main";
