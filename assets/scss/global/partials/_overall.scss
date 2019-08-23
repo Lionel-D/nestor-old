@@ -14,3 +14,7 @@ body {
   width: 100vw;
   height: 100vh;
 }
+
+[class*="btn-outline-"] {
+  background: $card-cap-bg;
+}
