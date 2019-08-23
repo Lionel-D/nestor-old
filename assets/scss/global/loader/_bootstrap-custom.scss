@@ -63,7 +63,7 @@ $colors: map-merge(
 );
 
 $primary:   $blue !default;
-$secondary: $gray-600 !default;
+$secondary: $gray-500;
 $success:   $green !default;
 $info:      $cyan !default;
 $warning:   $yellow !default;
@@ -111,3 +111,8 @@ $input-focus-border-color:    $component-active-bg;
 
 // Cards
 $card-cap-bg: rgba($black, .25);
+
+// Alerts
+$alert-bg-level:      2;
+$alert-border-level:  6;
+$alert-color-level:   10;
