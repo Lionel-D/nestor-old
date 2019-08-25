@@ -5,6 +5,7 @@
   $hd-img-path: '../../../images/' + $filename + '@2x.' + $ext;
   $hd-min-width: ($sd-max-width / 2) + 'px';
   background-image: url($sd-img-path);
+
   @media
   only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: $hd-min-width),
   only screen and (   min--moz-device-pixel-ratio: 2) and (min-width: $hd-min-width),

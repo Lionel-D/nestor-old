@@ -93,14 +93,14 @@ $theme-colors: map-merge(
 $enable-responsive-font-sizes:  true;
 
 // Links
-$link-color:            theme-color("nestor");
+$link-color:            theme-color('nestor');
 $link-decoration:       none !default;
-$link-hover-color:      scale_color($link-color, $green: -25%);
+$link-hover-color:      scale-color($link-color, $green: -25%);
 $link-hover-decoration: underline !default;
 
 // Components
 $component-active-color:  $white !default;
-$component-active-bg:     theme-color("nestor");
+$component-active-bg:     theme-color('nestor');
 
 // Buttons + Forms
 $input-btn-focus-width:       1px;
