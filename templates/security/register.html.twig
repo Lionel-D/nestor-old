@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'Register'|trans([],'security') }}{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('security') }}
+{% endblock %}
+
+{% block body %}
+    <div class="container h-100 d-flex justify-content-center align-items-center">
+        <div class="text-center">
+            <a href="{{ path('site_homepage') }}" class="d-inline-block mb-4">
+                <img src="{{ asset('build/images/nestor-icon.svg') }}" width="80" height="80" class="img-fluid" alt="{{ 'Nestor Logo'|trans }}">
+            </a>
+
+            <div class="card text-white bg-dark">
+                <h3 class="card-header text-center">{{ 'Register'|trans([],'security') }} :</h3>
+                <div class="card-body">
+                    {{ form_start(registrationForm, {'attr': {'novalidate': 'novalidate'}}) }}
+                    {{ form_row(registrationForm.name, {'label_attr': {'class': 'sr-only'}}) }}
+                        {{ form_row(registrationForm.email, {'label_attr': {'class': 'sr-only'}}) }}
+                        {{ form_row(registrationForm.plainPassword, {'label_attr': {'class': 'sr-only'}}) }}
+                        {{ form_row(registrationForm.agreeTerms) }}
+
+                        <button type="submit" name="login_submit" class="btn btn-block btn-outline-nestor">
+                            <i class="fas fa-sign-in-alt"></i> {{ 'Sign in'|trans([],'security') }}
+                        </button>
+                    {{ form_end(registrationForm) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('security') }}
+{% endblock %}
