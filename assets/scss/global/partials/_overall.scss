@@ -18,3 +18,10 @@ body {
 [class*='btn-outline-'] {
   background: $card-cap-bg;
 }
+
+label.required::after {
+  display: inline-block;
+  margin-left: .125rem;
+  content: '*';
+  color: $danger;
+}

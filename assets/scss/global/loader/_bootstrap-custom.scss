@@ -102,6 +102,9 @@ $link-hover-decoration: underline !default;
 $component-active-color:  $white !default;
 $component-active-bg:     theme-color('nestor');
 
+// Typography
+$text-muted:  $gray-500;
+
 // Buttons + Forms
 $input-btn-focus-width:       1px;
 $input-btn-focus-color:       $component-active-bg;
