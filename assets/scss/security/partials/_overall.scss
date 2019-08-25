@@ -1,7 +1,7 @@
 // -- OVERALL STYLES ----------------------------------- //
 
 body {
-  @include retina-bg-img("nestor-login-bg", "jpg", 2560);
+  @include retina-bg-img('nestor-login-bg', 'jpg', 2560);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;

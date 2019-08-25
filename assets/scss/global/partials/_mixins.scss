@@ -1,9 +1,9 @@
 // -- GLOBAL MIXINS ------------------------------------ //
 
 @mixin retina-bg-img($filename, $ext, $sd-max-width: 2560) {
-  $sd-img-path: "../../../images/" + $filename + "." + $ext;
-  $hd-img-path: "../../../images/" + $filename + "@2x." + $ext;
-  $hd-min-width: ($sd-max-width / 2) + "px";
+  $sd-img-path: '../../../images/' + $filename + '.' + $ext;
+  $hd-img-path: '../../../images/' + $filename + '@2x.' + $ext;
+  $hd-min-width: ($sd-max-width / 2) + 'px';
   background-image: url($sd-img-path);
   @media
   only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: $hd-min-width),

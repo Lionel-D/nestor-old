@@ -1,27 +1,27 @@
 @charset "utf-8";
 
 // -- GOOGLE FONTS ------------------------------------- //
-@import "global/loader/fonts";
-@import "app/loader/fonts";
+@import 'global/loader/fonts';
+@import 'app/loader/fonts';
 
 // -- VARIABLES ---------------------------------------- //
-@import "global/loader/variables";
-@import "app/loader/variables";
+@import 'global/loader/variables';
+@import 'app/loader/variables';
 
 // -- BOOTSTRAP ---------------------------------------- //
-@import "../../node_modules/bootstrap/scss/functions";
-@import "global/loader/bootstrap-custom";
-@import "app/loader/bootstrap-custom";
-@import "global/loader/bootstrap";
-@import "app/loader/bootstrap";
+@import '../../node_modules/bootstrap/scss/functions';
+@import 'global/loader/bootstrap-custom';
+@import 'app/loader/bootstrap-custom';
+@import 'global/loader/bootstrap';
+@import 'app/loader/bootstrap';
 
 // -- FONT AWESOME ------------------------------------- //
-@import "../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+@import '../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome';
 // -- Icons styles to load
-@import "../../node_modules/@fortawesome/fontawesome-free/scss/solid";
-//@import "../../node_modules/@fortawesome/fontawesome-free/scss/regular";
-//@import "../../node_modules/@fortawesome/fontawesome-free/scss/brands";
+@import '../../node_modules/@fortawesome/fontawesome-free/scss/solid';
+//@import '../../node_modules/@fortawesome/fontawesome-free/scss/regular';
+//@import '../../node_modules/@fortawesome/fontawesome-free/scss/brands';
 
 // -- STYLES ------------------------------------------- //
-@import "global/main";
-@import "app/main";
+@import 'global/main';
+@import 'app/main';
