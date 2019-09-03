@@ -13,6 +13,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\IsTrue;
+use Symfony\Component\Validator\Constraints\Regex;
 
 /**
  * Class RegistrationFormType
@@ -35,20 +36,30 @@ class RegistrationFormType extends AbstractType
                 'help' => 'A confirmation message will be sent to this address'
             ])
             ->add('plainPassword', PasswordType::class, [
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
                 'mapped' => false,
                 'label' => 'Password',
-                'help' => 'Your password should be at least 8 characters, with at least 1 digit and 1 symbol',
+                'help' => 'Your password should be at least 8 characters with letters, digits & symbols',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Please enter a password',
                     ]),
                     new Length([
                         'min' => 8,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        'minMessage' => 'Your password should be at least {{ limit }} characters long',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
+                    ]),
+                    new Regex([
+                        'pattern' => '/[a-zA-Z]+/',
+                        'message' => 'Your password must contain at least one letter',
+                    ]),
+                    new Regex([
+                        'pattern' => '/\d+/',
+                        'message' => 'Your password must contain at least one digit',
+                    ]),
+                    new Regex([
+                        'pattern' => '/(\W|_)+/',
+                        'message' => 'Your password must contain at least one symbol',
                     ]),
                 ],
             ])
