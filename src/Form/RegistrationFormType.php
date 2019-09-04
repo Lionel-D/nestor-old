@@ -22,6 +22,36 @@ use Symfony\Component\Validator\Constraints\Regex;
  */
 class RegistrationFormType extends AbstractType
 {
+    /** @var array $passwordConstraints */
+    private $passwordConstraints;
+
+    public function __construct()
+    {
+        $this->passwordConstraints = [
+            new NotBlank([
+                'message' => 'Please choose a password',
+            ]),
+            new Length([
+                'min' => 8,
+                'minMessage' => 'Your password should be at least {{ limit }} characters long',
+                // max length allowed by Symfony for security reasons
+                'max' => 4096,
+            ]),
+            new Regex([
+                'pattern' => '/[a-zA-Z]+/',
+                'message' => 'Your password must contain at least one letter',
+            ]),
+            new Regex([
+                'pattern' => '/\d+/',
+                'message' => 'Your password must contain at least one digit',
+            ]),
+            new Regex([
+                'pattern' => '/(\W|_)+/',
+                'message' => 'Your password must contain at least one symbol',
+            ]),
+        ];
+    }
+
     /**
      * @param FormBuilderInterface $builder
      * @param array                $options
@@ -39,29 +69,7 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'label' => 'Password',
                 'help' => 'Your password should be at least 8 characters with letters, digits & symbols',
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Please enter a password',
-                    ]),
-                    new Length([
-                        'min' => 8,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters long',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 4096,
-                    ]),
-                    new Regex([
-                        'pattern' => '/[a-zA-Z]+/',
-                        'message' => 'Your password must contain at least one letter',
-                    ]),
-                    new Regex([
-                        'pattern' => '/\d+/',
-                        'message' => 'Your password must contain at least one digit',
-                    ]),
-                    new Regex([
-                        'pattern' => '/(\W|_)+/',
-                        'message' => 'Your password must contain at least one symbol',
-                    ]),
-                ],
+                'constraints' => $this->passwordConstraints,
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
