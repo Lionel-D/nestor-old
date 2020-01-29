@@ -47,7 +47,7 @@ abstract class ProjectTestCase extends WebTestCase
         $this->assertLogged('hello@lionel-d.com', ['ROLE_SUPER_ADMIN']);
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
 
