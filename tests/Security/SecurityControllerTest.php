@@ -70,8 +70,14 @@ class SecurityControllerTest extends ProjectTestCase
     public function testRegisterFailedNoName()
     {
         $crawler = $this->successfullyLoadRegisterPage();
+        $formData = [
+            'name' => '',
+            'email' => 'new@user.com',
+            'password' => '1newpa$$',
+            'terms' => true,
+        ];
 
-        $this->fillAndSubmitRegisterForm($crawler, '', 'new@user.com', '1newpa$$', true);
+        $this->fillAndSubmitRegisterForm($crawler, $formData);
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('.form-error-message', 'Please choose a name.');
@@ -80,8 +86,14 @@ class SecurityControllerTest extends ProjectTestCase
     public function testRegisterFailedNoEmail()
     {
         $crawler = $this->successfullyLoadRegisterPage();
+        $formData = [
+            'name' => 'NewUser',
+            'email' => '',
+            'password' => '1newpa$$',
+            'terms' => true,
+        ];
 
-        $this->fillAndSubmitRegisterForm($crawler, 'NewUser', '', '1newpa$$', true);
+        $this->fillAndSubmitRegisterForm($crawler, $formData);
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('.form-error-message', 'You must enter an email.');
@@ -90,8 +102,14 @@ class SecurityControllerTest extends ProjectTestCase
     public function testRegisterFailedInvalidEmail()
     {
         $crawler = $this->successfullyLoadRegisterPage();
+        $formData = [
+            'name' => 'NewUser',
+            'email' => 'toto',
+            'password' => '1newpa$$',
+            'terms' => true,
+        ];
 
-        $this->fillAndSubmitRegisterForm($crawler, 'NewUser', 'toto', '1newpa$$', true);
+        $this->fillAndSubmitRegisterForm($crawler, $formData);
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('.form-error-message', 'This is not a valid email.');
@@ -100,8 +118,14 @@ class SecurityControllerTest extends ProjectTestCase
     public function testRegisterFailedEmailAlreadyUsed()
     {
         $crawler = $this->successfullyLoadRegisterPage();
+        $formData = [
+            'name' => 'NewUser',
+            'email' => 'hello@lionel-d.com',
+            'password' => '1newpa$$',
+            'terms' => true,
+        ];
 
-        $this->fillAndSubmitRegisterForm($crawler, 'NewUser', 'hello@lionel-d.com', '1newpa$$', true);
+        $this->fillAndSubmitRegisterForm($crawler, $formData);
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('.form-error-message', 'There is already an account with this email.');
@@ -110,8 +134,14 @@ class SecurityControllerTest extends ProjectTestCase
     public function testRegisterFailedNoPassword()
     {
         $crawler = $this->successfullyLoadRegisterPage();
+        $formData = [
+            'name' => 'NewUser',
+            'email' => 'new@user.com',
+            'password' => '',
+            'terms' => true,
+        ];
 
-        $this->fillAndSubmitRegisterForm($crawler, 'NewUser', 'new@user.com', '', true);
+        $this->fillAndSubmitRegisterForm($crawler, $formData);
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('.form-error-message', 'Please choose a password.');
@@ -120,8 +150,14 @@ class SecurityControllerTest extends ProjectTestCase
     public function testRegisterFailedPasswordTooShort()
     {
         $crawler = $this->successfullyLoadRegisterPage();
+        $formData = [
+            'name' => 'NewUser',
+            'email' => 'new@user.com',
+            'password' => '1a$',
+            'terms' => true,
+        ];
 
-        $this->fillAndSubmitRegisterForm($crawler, 'NewUser', 'new@user.com', '1a$', true);
+        $this->fillAndSubmitRegisterForm($crawler, $formData);
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('.form-error-message', 'Your password should be at least 8 characters long.');
@@ -130,8 +166,14 @@ class SecurityControllerTest extends ProjectTestCase
     public function testRegisterFailedPasswordWithoutLetter()
     {
         $crawler = $this->successfullyLoadRegisterPage();
+        $formData = [
+            'name' => 'NewUser',
+            'email' => 'new@user.com',
+            'password' => '$1234567',
+            'terms' => true,
+        ];
 
-        $this->fillAndSubmitRegisterForm($crawler, 'NewUser', 'new@user.com', '$1234567', true);
+        $this->fillAndSubmitRegisterForm($crawler, $formData);
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('.form-error-message', 'Your password must contain at least one letter.');
@@ -140,8 +182,14 @@ class SecurityControllerTest extends ProjectTestCase
     public function testRegisterFailedPasswordWithoutDigit()
     {
         $crawler = $this->successfullyLoadRegisterPage();
+        $formData = [
+            'name' => 'NewUser',
+            'email' => 'new@user.com',
+            'password' => '$abcdefg',
+            'terms' => true,
+        ];
 
-        $this->fillAndSubmitRegisterForm($crawler, 'NewUser', 'new@user.com', '$abcdefg', true);
+        $this->fillAndSubmitRegisterForm($crawler, $formData);
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('.form-error-message', 'Your password must contain at least one digit.');
@@ -150,8 +198,14 @@ class SecurityControllerTest extends ProjectTestCase
     public function testRegisterFailedPasswordWithoutSymbol()
     {
         $crawler = $this->successfullyLoadRegisterPage();
+        $formData = [
+            'name' => 'NewUser',
+            'email' => 'new@user.com',
+            'password' => '1234567x',
+            'terms' => true,
+        ];
 
-        $this->fillAndSubmitRegisterForm($crawler, 'NewUser', 'new@user.com', '1234567x', true);
+        $this->fillAndSubmitRegisterForm($crawler, $formData);
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('.form-error-message', 'Your password must contain at least one symbol.');
@@ -160,8 +214,14 @@ class SecurityControllerTest extends ProjectTestCase
     public function testRegisterFailedTermsNotAgreed()
     {
         $crawler = $this->successfullyLoadRegisterPage();
+        $formData = [
+            'name' => 'NewUser',
+            'email' => 'new@user.com',
+            'password' => '1newpa$$',
+            'terms' => false,
+        ];
 
-        $this->fillAndSubmitRegisterForm($crawler, 'NewUser', 'new@user.com', '1newpa$$', false);
+        $this->fillAndSubmitRegisterForm($crawler, $formData);
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('.form-error-message', 'You should agree to our terms.');
@@ -170,8 +230,14 @@ class SecurityControllerTest extends ProjectTestCase
     public function testRegisterSuccessful()
     {
         $crawler = $this->successfullyLoadRegisterPage();
+        $formData = [
+            'name' => 'NewUser',
+            'email' => 'new@user.com',
+            'password' => '1newpa$$',
+            'terms' => true,
+        ];
 
-        $this->fillAndSubmitRegisterForm($crawler, 'NewUser', 'new@user.com', '1newpa$$', true);
+        $this->fillAndSubmitRegisterForm($crawler, $formData);
 
         $this->assertResponseRedirects('/app/dashboard');
         $this->client->followRedirect();
@@ -221,20 +287,17 @@ class SecurityControllerTest extends ProjectTestCase
 
     /**
      * @param Crawler $crawler
-     * @param string  $name
-     * @param string  $email
-     * @param string  $password
-     * @param bool    $terms
+     * @param array   $formData
      */
-    private function fillAndSubmitRegisterForm(Crawler $crawler, $name, $email, $password, $terms)
+    private function fillAndSubmitRegisterForm(Crawler $crawler, $formData)
     {
         $form = $crawler->selectButton('register_submit')->form();
 
-        $form['registration_form[name]']          = $name;
-        $form['registration_form[email]']         = $email;
-        $form['registration_form[plainPassword]'] = $password;
+        $form['registration_form[name]']          = $formData['name'];
+        $form['registration_form[email]']         = $formData['email'];
+        $form['registration_form[plainPassword]'] = $formData['password'];
 
-        if ($terms) {
+        if ($formData['terms']) {
             $form['registration_form[agreeTerms]'] = "1";
         }
 
