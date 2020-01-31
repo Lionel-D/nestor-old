@@ -1,8 +1,10 @@
-/* -------------------------------- */
-/* ------ App specific files ------ */
-/* -------------------------------- */
+// -- WEBPACK LOADER ----------------------------------- //
 
-/* CSS Files ---------------------- */
+// -- CSS FILES ---------------------------------------- //
 require('../scss/app.scss');
 
-/* JS Files ----------------------- */
+// -- JS FILES ----------------------------------------- //
+// -- Bootstrap dependencies
+//const $ = require('jquery');
+//require('popper.js');
+require('bootstrap');

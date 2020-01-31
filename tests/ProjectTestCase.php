@@ -39,15 +39,15 @@ abstract class ProjectTestCase extends WebTestCase
 
     protected function assertLoggedAsAdmin()
     {
-        $this->assertLogged('admin@admin.com', ['ROLE_ADMIN']);
+        $this->assertLogged('admin@admin.com', ['ROLE_ADMIN','ROLE_USER']);
     }
 
     protected function assertLoggedAsSuperAdmin()
     {
-        $this->assertLogged('hello@lionel-d.com', ['ROLE_SUPER_ADMIN']);
+        $this->assertLogged('hello@lionel-d.com', ['ROLE_SUPER_ADMIN','ROLE_USER']);
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
 

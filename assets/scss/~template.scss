@@ -1,0 +1,36 @@
+// ----------------------------------------------------- //
+// ------------------ STYLE TEMPLATE ------------------- //
+// ----------------------------------------------------- //
+
+// Clone the *~template* folder and name it after your *stylename*
+// Clone this file and name it *stylename.scss*
+// Replace *template* in import paths with your *stylename*
+// Add partials as needed and import them with *stylename/main.scss*
+
+@charset "utf-8";
+
+// -- GOOGLE FONTS ------------------------------------- //
+@import 'global/loader/fonts';
+@import '~template/loader/fonts';
+
+// -- VARIABLES ---------------------------------------- //
+@import 'global/loader/variables';
+@import '~template/loader/variables';
+
+// -- BOOTSTRAP ---------------------------------------- //
+@import '../../node_modules/bootstrap/scss/functions';
+@import 'global/loader/bootstrap-custom';
+@import '~template/loader/bootstrap-custom';
+@import 'global/loader/bootstrap';
+@import '~template/loader/bootstrap';
+
+// -- FONT AWESOME ------------------------------------- //
+//@import '../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome';
+// -- Icons styles to load
+//@import '../../node_modules/@fortawesome/fontawesome-free/scss/solid';
+//@import '../../node_modules/@fortawesome/fontawesome-free/scss/regular';
+//@import '../../node_modules/@fortawesome/fontawesome-free/scss/brands';
+
+// -- STYLES ------------------------------------------- //
+@import 'global/main';
+@import '~template/main';

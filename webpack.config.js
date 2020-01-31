@@ -14,6 +14,19 @@ Encore
     // only needed for CDN's or sub-directory deploy
     //.setManifestKeyPrefix('build/')
 
+    .copyFiles({
+        from: './assets/images',
+
+        // optional target path, relative to the output dir
+        to: 'images/[path][name].[ext]',
+
+        // if versioning is enabled, add the file hash too
+        //to: 'images/[path][name].[hash:8].[ext]',
+
+        // only copy files matching this pattern
+        //pattern: /\.(png|jpg|jpeg)$/
+    })
+
     /*
      * ENTRY CONFIG
      *
@@ -23,11 +36,9 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
-    .addEntry('base', './assets/js/base.js')
-    .addEntry('login', './assets/js/login.js')
-    .addEntry('site', './assets/js/site.js')
+    .addEntry('security', './assets/js/security.js')
+    .addEntry('website', './assets/js/website.js')
     .addEntry('app', './assets/js/app.js')
-    .addEntry('admin', './assets/js/admin.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()

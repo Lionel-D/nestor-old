@@ -1,6 +1,6 @@
 # NESTOR
 
-*Inteligent groceries shopping list manager*
+*Intelligent groceries shopping list manager*
 
 [![Build Status](https://travis-ci.com/Lionel-D/nestor.svg?branch=develop)](https://travis-ci.com/Lionel-D/nestor)
 [![Maintainability](https://api.codeclimate.com/v1/badges/8d90efd4e9207c3ea6f1/maintainability)](https://codeclimate.com/github/Lionel-D/nestor/maintainability)

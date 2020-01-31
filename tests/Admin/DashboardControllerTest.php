@@ -11,11 +11,6 @@ use App\Tests\ProjectTestCase;
  */
 class DashboardControllerTest extends ProjectTestCase
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-    }
-
     public function testDashboardDisplayAsAuthenticatedAdmin()
     {
         $this->assertLoggedAsAdmin();
@@ -23,7 +18,7 @@ class DashboardControllerTest extends ProjectTestCase
         $this->client->request('GET', '/admin/dashboard');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Hello DashboardController!');
+        $this->assertSelectorTextContains('h1', 'Hello AdminDashboardController!');
     }
 
     public function testDashboardDisplayAsAuthenticatedUser()
@@ -41,11 +36,6 @@ class DashboardControllerTest extends ProjectTestCase
 
         $this->assertResponseRedirects('/login');
         $this->client->followRedirect();
-        $this->assertSelectorTextContains('h1', 'Please sign in');
-    }
-
-    protected function tearDown()
-    {
-        parent::tearDown();
+        $this->assertSelectorTextContains('.card-header', 'Please sign in');
     }
 }

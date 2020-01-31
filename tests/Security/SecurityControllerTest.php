@@ -12,11 +12,6 @@ use Symfony\Component\DomCrawler\Crawler;
  */
 class SecurityControllerTest extends ProjectTestCase
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-    }
-
     public function testLoginSuccessful()
     {
         $crawler = $this->successfullyLoadLoginPage();
@@ -25,10 +20,21 @@ class SecurityControllerTest extends ProjectTestCase
 
         $this->assertResponseRedirects('/app/dashboard');
         $this->client->followRedirect();
-        $this->assertSelectorTextContains('h1', 'Hello DashboardController!');
+        $this->assertSelectorTextContains('h1', 'Hello AppDashboardController!');
     }
 
-    public function testLoginFailed()
+    public function testLoginFailedWrongPassword()
+    {
+        $crawler = $this->successfullyLoadLoginPage();
+
+        $this->fillAndSubmitLoginForm($crawler, 'john@doe.com', 'wrongpassword');
+
+        $this->assertResponseRedirects('/login');
+        $this->client->followRedirect();
+        $this->assertSelectorTextContains('.form-error-message', 'Invalid credentials.');
+    }
+
+    public function testLoginFailedNoAccount()
     {
         $crawler = $this->successfullyLoadLoginPage();
 
@@ -36,7 +42,7 @@ class SecurityControllerTest extends ProjectTestCase
 
         $this->assertResponseRedirects('/login');
         $this->client->followRedirect();
-        $this->assertSelectorTextContains('.alert-danger', 'Email could not be found.');
+        $this->assertSelectorTextContains('.form-error-message', 'Email could not be found.');
     }
 
     public function testLoginAsAlreadyAuthenticated()
@@ -47,7 +53,7 @@ class SecurityControllerTest extends ProjectTestCase
 
         $this->assertResponseRedirects('/app/dashboard');
         $this->client->followRedirect();
-        $this->assertSelectorTextContains('h1', 'Hello DashboardController!');
+        $this->assertSelectorTextContains('h1', 'Hello AppDashboardController!');
     }
 
     public function testLogout()
@@ -61,9 +67,181 @@ class SecurityControllerTest extends ProjectTestCase
         $this->assertSelectorTextContains('h1', 'Hello HomeController!');
     }
 
-    protected function tearDown()
+    public function testRegisterFailedNoName()
     {
-        parent::tearDown();
+        $crawler = $this->successfullyLoadRegisterPage();
+        $formData = [
+            'name' => '',
+            'email' => 'new@user.com',
+            'password' => '1newpa$$',
+            'terms' => true,
+        ];
+
+        $this->fillAndSubmitRegisterForm($crawler, $formData);
+
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorTextContains('.form-error-message', 'Please choose a name.');
+    }
+
+    public function testRegisterFailedNoEmail()
+    {
+        $crawler = $this->successfullyLoadRegisterPage();
+        $formData = [
+            'name' => 'NewUser',
+            'email' => '',
+            'password' => '1newpa$$',
+            'terms' => true,
+        ];
+
+        $this->fillAndSubmitRegisterForm($crawler, $formData);
+
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorTextContains('.form-error-message', 'You must enter an email.');
+    }
+
+    public function testRegisterFailedInvalidEmail()
+    {
+        $crawler = $this->successfullyLoadRegisterPage();
+        $formData = [
+            'name' => 'NewUser',
+            'email' => 'toto',
+            'password' => '1newpa$$',
+            'terms' => true,
+        ];
+
+        $this->fillAndSubmitRegisterForm($crawler, $formData);
+
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorTextContains('.form-error-message', 'This is not a valid email.');
+    }
+
+    public function testRegisterFailedEmailAlreadyUsed()
+    {
+        $crawler = $this->successfullyLoadRegisterPage();
+        $formData = [
+            'name' => 'NewUser',
+            'email' => 'hello@lionel-d.com',
+            'password' => '1newpa$$',
+            'terms' => true,
+        ];
+
+        $this->fillAndSubmitRegisterForm($crawler, $formData);
+
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorTextContains('.form-error-message', 'There is already an account with this email.');
+    }
+
+    public function testRegisterFailedNoPassword()
+    {
+        $crawler = $this->successfullyLoadRegisterPage();
+        $formData = [
+            'name' => 'NewUser',
+            'email' => 'new@user.com',
+            'password' => '',
+            'terms' => true,
+        ];
+
+        $this->fillAndSubmitRegisterForm($crawler, $formData);
+
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorTextContains('.form-error-message', 'Please choose a password.');
+    }
+
+    public function testRegisterFailedPasswordTooShort()
+    {
+        $crawler = $this->successfullyLoadRegisterPage();
+        $formData = [
+            'name' => 'NewUser',
+            'email' => 'new@user.com',
+            'password' => '1a$',
+            'terms' => true,
+        ];
+
+        $this->fillAndSubmitRegisterForm($crawler, $formData);
+
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorTextContains('.form-error-message', 'Your password should be at least 8 characters long.');
+    }
+
+    public function testRegisterFailedPasswordWithoutLetter()
+    {
+        $crawler = $this->successfullyLoadRegisterPage();
+        $formData = [
+            'name' => 'NewUser',
+            'email' => 'new@user.com',
+            'password' => '$1234567',
+            'terms' => true,
+        ];
+
+        $this->fillAndSubmitRegisterForm($crawler, $formData);
+
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorTextContains('.form-error-message', 'Your password must contain at least one letter.');
+    }
+
+    public function testRegisterFailedPasswordWithoutDigit()
+    {
+        $crawler = $this->successfullyLoadRegisterPage();
+        $formData = [
+            'name' => 'NewUser',
+            'email' => 'new@user.com',
+            'password' => '$abcdefg',
+            'terms' => true,
+        ];
+
+        $this->fillAndSubmitRegisterForm($crawler, $formData);
+
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorTextContains('.form-error-message', 'Your password must contain at least one digit.');
+    }
+
+    public function testRegisterFailedPasswordWithoutSymbol()
+    {
+        $crawler = $this->successfullyLoadRegisterPage();
+        $formData = [
+            'name' => 'NewUser',
+            'email' => 'new@user.com',
+            'password' => '1234567x',
+            'terms' => true,
+        ];
+
+        $this->fillAndSubmitRegisterForm($crawler, $formData);
+
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorTextContains('.form-error-message', 'Your password must contain at least one symbol.');
+    }
+
+    public function testRegisterFailedTermsNotAgreed()
+    {
+        $crawler = $this->successfullyLoadRegisterPage();
+        $formData = [
+            'name' => 'NewUser',
+            'email' => 'new@user.com',
+            'password' => '1newpa$$',
+            'terms' => false,
+        ];
+
+        $this->fillAndSubmitRegisterForm($crawler, $formData);
+
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorTextContains('.form-error-message', 'You should agree to our terms.');
+    }
+
+    public function testRegisterSuccessful()
+    {
+        $crawler = $this->successfullyLoadRegisterPage();
+        $formData = [
+            'name' => 'NewUser',
+            'email' => 'new@user.com',
+            'password' => '1newpa$$',
+            'terms' => true,
+        ];
+
+        $this->fillAndSubmitRegisterForm($crawler, $formData);
+
+        $this->assertResponseRedirects('/app/dashboard');
+        $this->client->followRedirect();
+        $this->assertSelectorTextContains('h1', 'Hello AppDashboardController!');
     }
 
     /**
@@ -74,7 +252,7 @@ class SecurityControllerTest extends ProjectTestCase
         $crawler = $this->client->request('GET', '/login');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Please sign in');
+        $this->assertSelectorTextContains('.card-header', 'Please sign in');
 
         return $crawler;
     }
@@ -90,6 +268,38 @@ class SecurityControllerTest extends ProjectTestCase
 
         $form['email']    = $email;
         $form['password'] = $password;
+
+        $this->client->submit($form);
+    }
+
+    /**
+     * @return Crawler
+     */
+    private function successfullyLoadRegisterPage()
+    {
+        $crawler = $this->client->request('GET', '/register');
+
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorTextContains('.card-header', 'Register');
+
+        return $crawler;
+    }
+
+    /**
+     * @param Crawler $crawler
+     * @param array   $formData
+     */
+    private function fillAndSubmitRegisterForm(Crawler $crawler, $formData)
+    {
+        $form = $crawler->selectButton('register_submit')->form();
+
+        $form['registration_form[name]']          = $formData['name'];
+        $form['registration_form[email]']         = $formData['email'];
+        $form['registration_form[plainPassword]'] = $formData['password'];
+
+        if ($formData['terms']) {
+            $form['registration_form[agreeTerms]'] = "1";
+        }
 
         $this->client->submit($form);
     }

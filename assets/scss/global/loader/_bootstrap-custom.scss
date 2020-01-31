@@ -1,0 +1,121 @@
+// -- GLOBAL BOOTSTRAP VARIABLES OVERRIDE -------------- //
+
+// Color system
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+$grays: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$grays: map-merge(
+  (
+    "100": $gray-100,
+    "200": $gray-200,
+    "300": $gray-300,
+    "400": $gray-400,
+    "500": $gray-500,
+    "600": $gray-600,
+    "700": $gray-700,
+    "800": $gray-800,
+    "900": $gray-900
+  ),
+  $grays
+);
+
+$blue:    #007bff !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #e83e8c !default;
+$red:     #dc3545 !default;
+$orange:  $nestor-orange;
+$yellow:  #ffe100;
+$green:   #28a745 !default;
+$teal:    #20c997 !default;
+$cyan:    #17a2b8 !default;
+
+$colors: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$colors: map-merge(
+  (
+    "blue":       $blue,
+    "indigo":     $indigo,
+    "purple":     $purple,
+    "pink":       $pink,
+    "red":        $red,
+    "orange":     $orange,
+    "yellow":     $yellow,
+    "green":      $green,
+    "teal":       $teal,
+    "cyan":       $cyan,
+    "white":      $white,
+    "gray":       $gray-600,
+    "gray-dark":  $gray-800
+  ),
+  $colors
+);
+
+$primary:   $blue !default;
+$secondary: $gray-500;
+$success:   $green !default;
+$info:      $cyan !default;
+$warning:   $yellow !default;
+$nestor:    $orange;
+$danger:    $red !default;
+$light:     $gray-100 !default;
+$dark:      $gray-800 !default;
+
+$theme-colors: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$theme-colors: map-merge(
+  (
+    "primary":    $primary,
+    "secondary":  $secondary,
+    "success":    $success,
+    "info":       $info,
+    "warning":    $warning,
+    "nestor":     $nestor,
+    "danger":     $danger,
+    "light":      $light,
+    "dark":       $dark
+  ),
+  $theme-colors
+);
+
+// Options
+$enable-responsive-font-sizes:  true;
+
+// Links
+$link-color:            theme-color('nestor');
+$link-decoration:       none !default;
+$link-hover-color:      scale-color($link-color, $green: -25%);
+$link-hover-decoration: underline !default;
+
+// Components
+$component-active-color:  $white !default;
+$component-active-bg:     theme-color('nestor');
+
+// Typography
+$text-muted:  $gray-500;
+
+// Buttons + Forms
+$input-btn-focus-width:       1px;
+$input-btn-focus-color:       $component-active-bg;
+
+// Forms
+$input-focus-border-color:    $component-active-bg;
+
+// Cards
+$card-cap-bg: rgba($black, .25);
+
+// Alerts
+$alert-bg-level:      2;
+$alert-border-level:  6;
+$alert-color-level:   10;

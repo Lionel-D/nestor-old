@@ -11,7 +11,7 @@
       </trans-unit>
       <trans-unit id="TlkJ3BA" resname="messages.old-browser.informative-link">
         <source>messages.old-browser.informative-link</source>
-        <target><![CDATA[Please <a href="https://browsehappy.com/" title="Go to browserhappy.com">upgrade your browser</a> to improve your experience and security.]]></target>
+        <target>messages.old-browser.informative-link</target>
       </trans-unit>
       <trans-unit id="ZNpHpHq" resname="Javascript is disabled !">
         <source>Javascript is disabled !</source>
@@ -19,7 +19,39 @@
       </trans-unit>
       <trans-unit id="8o5S3nv" resname="messages.js-disabled.informative-link">
         <source>messages.js-disabled.informative-link</source>
-        <target><![CDATA[Please <a href="https://enable-javascript.com/" title="Go to enable-javascript.com">activate Javascript</a> on your browser to to improve your experience.]]></target>
+        <target>messages.js-disabled.informative-link</target>
+      </trans-unit>
+      <trans-unit id="LwBq2ci" resname="Nestor Logo">
+        <source>Nestor Logo</source>
+        <target>Nestor Logo</target>
+      </trans-unit>
+      <trans-unit id="q91dhkq" resname="Just to greet you, doesn't have to be real ;-)">
+        <source>Just to greet you, doesn't have to be real ;-)</source>
+        <target>Just to greet you, doesn't have to be real ;-)</target>
+      </trans-unit>
+      <trans-unit id="2FS620w" resname="A confirmation message will be sent to this address">
+        <source>A confirmation message will be sent to this address</source>
+        <target>A confirmation message will be sent to this address</target>
+      </trans-unit>
+      <trans-unit id="KsgKzqN" resname="At least 8 characters and must contain letters, digits &amp; symbols">
+        <source>At least 8 characters and must contain letters, digits &amp; symbols</source>
+        <target><![CDATA[At least 8 characters and must contain letters, digits & symbols]]></target>
+      </trans-unit>
+      <trans-unit id="gqNTf.D" resname="Name">
+        <source>Name</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="giREF.l" resname="Email">
+        <source>Email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="588_9PF" resname="Password">
+        <source>Password</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="0niVptT" resname="Agree terms">
+        <source>Agree terms</source>
+        <target>Agree terms</target>
       </trans-unit>
     </body>
   </file>
