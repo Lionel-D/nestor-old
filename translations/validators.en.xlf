@@ -381,6 +381,46 @@
         <source>The CSRF token is invalid. Please try to resubmit the form.</source>
         <target>The CSRF token is invalid. Please try to resubmit the form.</target>
       </trans-unit>
+      <trans-unit id="GEUXoV9" resname="Please choose a password.">
+        <source>Please choose a password.</source>
+        <target>Please choose a password.</target>
+      </trans-unit>
+      <trans-unit id="noPJSi6" resname="Your password should be at least {{ limit }} characters long.">
+        <source>Your password should be at least {{ limit }} characters long.</source>
+        <target>Your password should be at least {{ limit }} characters long.</target>
+      </trans-unit>
+      <trans-unit id="zic4M6Q" resname="Your password must contain at least one letter.">
+        <source>Your password must contain at least one letter.</source>
+        <target>Your password must contain at least one letter.</target>
+      </trans-unit>
+      <trans-unit id="_XG_6LQ" resname="Your password must contain at least one digit.">
+        <source>Your password must contain at least one digit.</source>
+        <target>Your password must contain at least one digit.</target>
+      </trans-unit>
+      <trans-unit id="QfYQh5_" resname="Your password must contain at least one symbol.">
+        <source>Your password must contain at least one symbol.</source>
+        <target>Your password must contain at least one symbol.</target>
+      </trans-unit>
+      <trans-unit id="IaE5GBl" resname="You should agree to our terms.">
+        <source>You should agree to our terms.</source>
+        <target>You should agree to our terms.</target>
+      </trans-unit>
+      <trans-unit id="L.K8uH4" resname="You must enter an email.">
+        <source>You must enter an email.</source>
+        <target>You must enter an email.</target>
+      </trans-unit>
+      <trans-unit id="DF3_t4F" resname="This is not a valid email.">
+        <source>This is not a valid email.</source>
+        <target>This is not a valid email.</target>
+      </trans-unit>
+      <trans-unit id="Ujh_4N1" resname="There is already an account with this email.">
+        <source>There is already an account with this email.</source>
+        <target>There is already an account with this email.</target>
+      </trans-unit>
+      <trans-unit id="P0Q.xxV" resname="Please choose a name.">
+        <source>Please choose a name.</source>
+        <target>Please choose a name.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -14,6 +14,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Regex;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class RegistrationFormType
@@ -22,32 +23,37 @@ use Symfony\Component\Validator\Constraints\Regex;
  */
 class RegistrationFormType extends AbstractType
 {
+    /** @var TranslatorInterface $translator */
+    private $translator;
+
     /** @var array $passwordConstraints */
     private $passwordConstraints;
 
-    public function __construct()
+    public function __construct(TranslatorInterface $translator)
     {
+        $this->translator = $translator;
+
         $this->passwordConstraints = [
             new NotBlank([
-                'message' => 'Please choose a password',
+                'message' => 'Please choose a password.',
             ]),
             new Length([
                 'min' => 8,
-                'minMessage' => 'Your password should be at least {{ limit }} characters long',
+                'minMessage' => 'Your password should be at least {{ limit }} characters long.',
                 // max length allowed by Symfony for security reasons
                 'max' => 4096,
             ]),
             new Regex([
                 'pattern' => '/[a-zA-Z]+/',
-                'message' => 'Your password must contain at least one letter',
+                'message' => 'Your password must contain at least one letter.',
             ]),
             new Regex([
                 'pattern' => '/\d+/',
-                'message' => 'Your password must contain at least one digit',
+                'message' => 'Your password must contain at least one digit.',
             ]),
             new Regex([
                 'pattern' => '/(\W|_)+/',
-                'message' => 'Your password must contain at least one symbol',
+                'message' => 'Your password must contain at least one symbol.',
             ]),
         ];
     }
@@ -60,15 +66,15 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'help' => 'Just to know how to greet you, doesn\'t have to be real ;-)',
+                'help' => 'Just to greet you, doesn\'t have to be real ;-)',
             ])
             ->add('email', EmailType::class, [
-                'help' => 'A confirmation message will be sent to this address'
+                'help' => 'A confirmation message will be sent to this address',
             ])
             ->add('plainPassword', PasswordType::class, [
                 'mapped' => false,
                 'label' => 'Password',
-                'help' => 'Your password should be at least 8 characters with letters, digits & symbols',
+                'help' => 'At least 8 characters and must contain letters, digits & symbols',
                 'constraints' => $this->passwordConstraints,
             ])
             ->add('agreeTerms', CheckboxType::class, [

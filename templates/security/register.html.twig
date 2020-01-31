@@ -17,12 +17,12 @@
                 <h3 class="card-header text-center">{{ 'Register'|trans([],'security') }} :</h3>
                 <div class="card-body">
                     {{ form_start(registrationForm, {'attr': {'novalidate': 'novalidate'}}) }}
-                    {{ form_row(registrationForm.name, {'label_attr': {'class': 'sr-only'}}) }}
+                        {{ form_row(registrationForm.name, {'label_attr': {'class': 'sr-only'}}) }}
                         {{ form_row(registrationForm.email, {'label_attr': {'class': 'sr-only'}}) }}
                         {{ form_row(registrationForm.plainPassword, {'label_attr': {'class': 'sr-only'}}) }}
                         {{ form_row(registrationForm.agreeTerms) }}
 
-                        <button type="submit" name="login_submit" class="btn btn-block btn-outline-nestor">
+                        <button type="submit" name="register_submit" class="btn btn-block btn-outline-nestor">
                             <i class="fas fa-sign-in-alt"></i> {{ 'Sign in'|trans([],'security') }}
                         </button>
                     {{ form_end(registrationForm) }}

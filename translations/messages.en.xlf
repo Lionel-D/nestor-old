@@ -25,6 +25,34 @@
         <source>Nestor Logo</source>
         <target>Nestor Logo</target>
       </trans-unit>
+      <trans-unit id="q91dhkq" resname="Just to greet you, doesn't have to be real ;-)">
+        <source>Just to greet you, doesn't have to be real ;-)</source>
+        <target>Just to greet you, doesn't have to be real ;-)</target>
+      </trans-unit>
+      <trans-unit id="2FS620w" resname="A confirmation message will be sent to this address">
+        <source>A confirmation message will be sent to this address</source>
+        <target>A confirmation message will be sent to this address</target>
+      </trans-unit>
+      <trans-unit id="KsgKzqN" resname="At least 8 characters and must contain letters, digits &amp; symbols">
+        <source>At least 8 characters and must contain letters, digits &amp; symbols</source>
+        <target><![CDATA[At least 8 characters and must contain letters, digits & symbols]]></target>
+      </trans-unit>
+      <trans-unit id="gqNTf.D" resname="Name">
+        <source>Name</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="giREF.l" resname="Email">
+        <source>Email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="588_9PF" resname="Password">
+        <source>Password</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="0niVptT" resname="Agree terms">
+        <source>Agree terms</source>
+        <target>Agree terms</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
