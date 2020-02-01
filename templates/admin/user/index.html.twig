@@ -1,0 +1,54 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Users list{% endblock %}
+
+{% block heading %}
+    <h1 class="display-4">Users list</h1>
+    <hr>
+{% endblock %}
+
+{% block main %}
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th class="text-right">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users_list %}
+                {% if 'ROLE_SUPER_ADMIN' not in user.roles %}
+                    <tr>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>
+                            {% for role in user.roles %}
+                                <span class="badge badge-nestor">{{ role }}</span>
+                            {% endfor %}
+                        </td>
+                        <td class="text-right">
+                            <a href="{{ path('admin_users_detail', {id: user.id}) }}" class="btn btn-sm btn-secondary">
+                                <i class="far fa-eye"></i>
+                            </a>
+                            {% if is_granted('ROLE_SUPER_ADMIN') or 'ROLE_ADMIN' not in user.roles %}
+                                <a href="{{ path('admin_users_delete', {id: user.id}) }}" class="btn btn-sm btn-danger">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endif %}
+            {% else %}
+                <tr>
+                    <td colspan="4">
+                        No user found :-(
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

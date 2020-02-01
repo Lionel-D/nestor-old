@@ -1,6 +1,12 @@
 {% extends 'global/includes/header.html.twig' %}
 
-{% block main_nav %}{% endblock %}
+{% block main_nav %}
+    <li class="nav-item">
+        <a href="{{ path('admin_users') }}" class="nav-link">
+            <i class="fas fa-users"></i> Users
+        </a>
+    </li>
+{% endblock %}
 
 {% block header_buttons %}
     <a href="{{ path('app_dashboard') }}" class="btn btn-sm btn-outline-secondary mr-2">

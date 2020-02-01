@@ -1,6 +1,12 @@
 {% extends 'global/includes/header.html.twig' %}
 
-{% block main_nav %}{% endblock %}
+{% block main_nav %}
+    <li class="nav-item">
+        <a href="#" class="nav-link">
+            <i class="fas fa-user-circle"></i> {{ 'Profile'|trans({},'app') }}
+        </a>
+    </li>
+{% endblock %}
 
 {% block header_buttons %}
     {% if is_granted('ROLE_ADMIN') %}

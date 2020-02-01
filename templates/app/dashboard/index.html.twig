@@ -2,17 +2,17 @@
 
 {% block title %}Hello DashboardController!{% endblock %}
 
+{% block heading %}
+    <h1 class="display-4">Hello {{ controller_name }}!</h1>
+{% endblock %}
+
 {% block main %}
-    <div class="container">
-        <h1 class="display-4">Hello {{ controller_name }}!</h1>
+    <p class="lead">
+        This friendly message is coming from:
+    </p>
 
-        <p class="lead">
-            This friendly message is coming from:
-        </p>
-
-        <ul>
-            <li>Your controller at <code><a href="{{ '/Users/lionel/Sites/nestor/src/Controller/App/DashboardController.php'|file_link(0) }}">src/Controller/App/DashboardController.php</a></code></li>
-            <li>Your template at <code><a href="{{ '/Users/lionel/Sites/nestor/templates/app/dashboard/index.html.twig'|file_link(0) }}">templates/app/dashboard/index.html.twig</a></code></li>
-        </ul>
-    </div>
+    <ul>
+        <li>Your controller at <code><a href="{{ '/Users/lionel/Sites/nestor/src/Controller/App/DashboardController.php'|file_link(0) }}">src/Controller/App/DashboardController.php</a></code></li>
+        <li>Your template at <code><a href="{{ '/Users/lionel/Sites/nestor/templates/app/dashboard/index.html.twig'|file_link(0) }}">templates/app/dashboard/index.html.twig</a></code></li>
+    </ul>
 {% endblock %}

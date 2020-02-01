@@ -6,7 +6,11 @@
 
 {% block body %}
     {{ include('app/includes/header.html.twig') }}
-    {% block main %}{% endblock %}
+    <div class="container">
+        {% block heading %}{% endblock %}
+        {{ include('global/includes/flash_messages.html.twig') }}
+        {% block main %}{% endblock %}
+    </div>
 {% endblock %}
 
 {% block javascripts %}
