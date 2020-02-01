@@ -1,31 +1,11 @@
-<header>
-    <nav class="navbar sticky-top navbar-expand-md navbar-dark bg-dark">
-        <a href="{{ path('site_homepage') }}" class="navbar-brand py-0">
-            <img src="{{ asset('build/images/nestor-icon.svg') }}" width="40" height="40" alt="{{ 'Nestor Logo'|trans }}">
+{% extends 'global/includes/header.html.twig' %}
+
+{% block main_nav %}{% endblock %}
+
+{% block header_buttons %}
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('admin_dashboard') }}" class="btn btn-sm btn-outline-secondary mr-2">
+            <i class="fas fa-tools"></i> {{ 'Admin panel'|trans({},'app') }}
         </a>
-
-        <span class="navbar-text">
-            {{ 'Welcome'|trans({'%name%': app.user.name},'app') }}!
-        </span>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div id="main-nav" class="collapse navbar-collapse justify-content-end text-right">
-            <ul class="navbar-nav mr-md-3">
-                {# Here goes the site navigation links #}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-user-circle"></i> {{ 'Profile'|trans({},'app') }}
-                    </a>
-                </li>
-            </ul>
-            <hr class="d-md-none">
-            {% if is_granted('ROLE_ADMIN') %}
-                <a href="{{ path('admin_dashboard') }}" class="btn btn-sm btn-outline-secondary mr-2"><i class="fas fa-tools"></i> {{ 'Admin panel'|trans({},'app') }}</a>
-            {% endif %}
-            <a href="{{ path('security_logout') }}" class="btn btn-sm btn-outline-nestor">{{ 'Sign out'|trans({},'security') }} <i class="fas fa-sign-out-alt"></i></a>
-        </div>
-    </nav>
-</header>
+    {% endif %}
+{% endblock %}
