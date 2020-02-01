@@ -47,7 +47,7 @@ class UserManager
      * @param int $id
      * @return User|null
      */
-    public function getUserDetails($id)
+    public function getUser($id)
     {
         $user = $this->userRepository->find($id);
 
@@ -64,11 +64,7 @@ class UserManager
      */
     public function deleteUser($id)
     {
-        $user = $this->userRepository->find($id);
-
-        if (!$user) {
-            throw new NotFoundHttpException('This user does not exist.');
-        }
+        $user = $this->getUser($id);
 
         $message = 'User ' . $user->getName() . ' (' . $user->getEmail() . ') successfully deleted.';
 

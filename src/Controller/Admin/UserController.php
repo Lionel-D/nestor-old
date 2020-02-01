@@ -37,7 +37,7 @@ class UserController extends AbstractController
      */
     public function read(UserManager $userManager, $id)
     {
-        $user = $userManager->getUserDetails($id);
+        $user = $userManager->getUser($id);
 
         return $this->render('admin/user/detail.html.twig', [
             'user' => $user,
@@ -56,7 +56,7 @@ class UserController extends AbstractController
 
         $message = $userManager->deleteUser($id);
 
-        $this->addFlash('success',$message);
+        $this->addFlash('success', $message);
 
         return $this->redirectToRoute('admin_users');
     }
