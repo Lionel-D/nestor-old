@@ -1,0 +1,43 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}User detail{% endblock %}
+
+{% block heading %}
+    <h1 class="display-4">{{ 'User'|trans({},'app') }} {{ user.name }}</h1>
+    <hr>
+{% endblock %}
+
+{% block main %}
+    <dl class="row">
+        <dt class="col-sm-3 col-md-2 text-sm-right">{{ 'Email'|trans({},'app') }} :</dt>
+        <dd class="col-sm-9 col-md-10">{{ user.email }}</dd>
+
+        <dt class="col-sm-3 col-md-2 text-sm-right">{{ 'Roles'|trans({},'app') }} :</dt>
+        <dd class="col-sm-9 col-md-10">
+            {% for role in user.roles %}
+                <span class="badge badge-nestor">{{ role }}</span>
+            {% endfor %}
+        </dd>
+    </dl>
+
+    <hr>
+
+    <a href="{{ path('admin_users') }}" class="btn btn-sm btn-secondary">
+        <i class="fas fa-arrow-left"></i> {{ 'Back to list'|trans({},'app') }}
+    </a>
+
+    <button
+            type="button"
+            class="btn btn-sm btn-danger"
+            data-toggle="modal"
+            data-target="#confirm_modal"
+            data-url="{{ path('admin_users_delete', {id: user.id}) }}"
+            data-action="delete user {{ user.name }}"
+    >
+        <i class="fas fa-trash-alt"></i> {{ 'Delete'|trans({},'app') }}
+    </button>
+{% endblock %}
+
+{% block modals %}
+    {{ include('global/includes/confirm_modal.html.twig') }}
+{% endblock %}

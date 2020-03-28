@@ -1,24 +1,15 @@
-<header>
-    <nav class="navbar sticky-top navbar-expand-md navbar-dark bg-dark">
-        <a href="{{ path('site_homepage') }}" class="navbar-brand py-0">
-            <img src="{{ asset('build/images/nestor-icon.svg') }}" width="40" height="40" alt="{{ 'Nestor Logo'|trans }}">
+{% extends 'global/includes/header.html.twig' %}
+
+{% block main_nav %}
+    <li class="nav-item">
+        <a href="{{ path('admin_users') }}" class="nav-link">
+            <i class="fas fa-users"></i> {{ 'Users'|trans({},'app') }}
         </a>
+    </li>
+{% endblock %}
 
-        <span class="navbar-text">
-            {{ 'Welcome'|trans({'%name%': app.user.name},'app') }}!
-        </span>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div id="main-nav" class="collapse navbar-collapse justify-content-end text-right">
-            <ul class="navbar-nav mr-md-3">
-                {# Here goes the site navigation links #}
-            </ul>
-            <hr class="d-md-none">
-            <a href="{{ path('app_dashboard') }}" class="btn btn-sm btn-outline-secondary mr-2"><i class="fas fa-th-list"></i> {{ 'App dashboard'|trans({},'app') }}</a>
-            <a href="{{ path('security_logout') }}" class="btn btn-sm btn-outline-nestor">{{ 'Sign out'|trans({},'security') }} <i class="fas fa-sign-out-alt"></i></a>
-        </div>
-    </nav>
-</header>
+{% block header_buttons %}
+    <a href="{{ path('app_dashboard') }}" class="btn btn-sm btn-outline-secondary mr-2">
+        <i class="fas fa-th-list"></i> {{ 'App dashboard'|trans({},'app') }}
+    </a>
+{% endblock %}

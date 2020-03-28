@@ -17,7 +17,11 @@
 
     <testsuites>
         <testsuite name="Project Test Suite">
-            <directory>tests</directory>
+            <directory>tests/Entity</directory>
+            <directory>tests/Website</directory>
+            <directory>tests/Security</directory>
+            <directory>tests/App</directory>
+            <directory>tests/Admin</directory>
         </testsuite>
     </testsuites>
 

@@ -37,11 +37,11 @@
         <source>At least 8 characters and must contain letters, digits &amp; symbols</source>
         <target><![CDATA[At least 8 characters and must contain letters, digits & symbols]]></target>
       </trans-unit>
-      <trans-unit id="gqNTf.D" resname="Name">
+      <trans-unit id="3NHVIj9" resname="Name">
         <source>Name</source>
         <target>Name</target>
       </trans-unit>
-      <trans-unit id="giREF.l" resname="Email">
+      <trans-unit id="lpzL089" resname="Email">
         <source>Email</source>
         <target>Email</target>
       </trans-unit>
@@ -49,7 +49,7 @@
         <source>Password</source>
         <target>Password</target>
       </trans-unit>
-      <trans-unit id="0niVptT" resname="Agree terms">
+      <trans-unit id="c1prjRW" resname="Agree terms">
         <source>Agree terms</source>
         <target>Agree terms</target>
       </trans-unit>

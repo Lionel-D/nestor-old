@@ -20,7 +20,7 @@
 
 #### Install
 
-- rename `.env.dist` to `.env` and set values for your local environment.
+- create `.env.local` based on `.env` and set values for your local environment.
 - `composer install` to get the framework dependencies.
 - `yarn install` to get the assets dependencies.
 - `php bin/console doctrine:database:create` to create database.
