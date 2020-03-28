@@ -3,7 +3,7 @@
 {% block title %}Users list{% endblock %}
 
 {% block heading %}
-    <h1 class="display-4">Users list</h1>
+    <h1 class="display-4">{{ 'Users list'|trans({},'app') }}</h1>
     <hr>
 {% endblock %}
 
@@ -12,10 +12,10 @@
         <table class="table">
             <thead class="thead-dark">
             <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Role</th>
-                <th class="text-right">Actions</th>
+                <th>{{ 'Name'|trans({},'app') }}</th>
+                <th>{{ 'Email'|trans({},'app') }}</th>
+                <th>{{ 'Roles'|trans({},'app') }}</th>
+                <th class="text-right">{{ 'Actions'|trans({},'app') }}</th>
             </tr>
             </thead>
             <tbody>
@@ -34,9 +34,16 @@
                                 <i class="far fa-eye"></i>
                             </a>
                             {% if is_granted('ROLE_SUPER_ADMIN') or 'ROLE_ADMIN' not in user.roles %}
-                                <a href="{{ path('admin_users_delete', {id: user.id}) }}" class="btn btn-sm btn-danger">
+                                <button
+                                    type="button"
+                                    class="btn btn-sm btn-danger"
+                                    data-toggle="modal"
+                                    data-target="#confirm_modal"
+                                    data-url="{{ path('admin_users_delete', {id: user.id}) }}"
+                                    data-action="delete user {{ user.name }}"
+                                >
                                     <i class="fas fa-trash-alt"></i>
-                                </a>
+                                </button>
                             {% endif %}
                         </td>
                     </tr>
@@ -44,11 +51,15 @@
             {% else %}
                 <tr>
                     <td colspan="4">
-                        No user found :-(
+                        <i class="fas fa-user-slash"></i> {{ 'No user found'|trans({},'app') }}
                     </td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
     </div>
+{% endblock %}
+
+{% block modals %}
+    {{ include('global/includes/confirm_modal.html.twig') }}
 {% endblock %}

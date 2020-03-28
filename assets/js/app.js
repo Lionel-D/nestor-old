@@ -8,3 +8,7 @@ require('../scss/app.scss');
 const $ = require('jquery');
 //require('popper.js');
 require('bootstrap');
+// -- End
+// create global $ variables
+global.$ = $;
+require('./global/confirm_modal');

@@ -1,0 +1,21 @@
+<!-- Modal -->
+<div class="modal fade" id="confirm_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="exampleModalLabel">{{ 'Are you sure'|trans({},'app') }} ?</h5>
+            </div>
+            <div class="modal-body">
+                {{ 'You\'re about to'|trans({},'app') }} <span></span>.
+            </div>
+            <div class="modal-footer bg-light py-2">
+                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">
+                    {{ 'Cancel'|trans({},'app') }}
+                </button>
+                <a href="" class="confirm btn btn-sm btn-danger">
+                    {{ 'Confirm'|trans({},'app') }}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

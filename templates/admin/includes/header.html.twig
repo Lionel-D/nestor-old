@@ -3,7 +3,7 @@
 {% block main_nav %}
     <li class="nav-item">
         <a href="{{ path('admin_users') }}" class="nav-link">
-            <i class="fas fa-users"></i> Users
+            <i class="fas fa-users"></i> {{ 'Users'|trans({},'app') }}
         </a>
     </li>
 {% endblock %}
